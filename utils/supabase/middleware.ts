@@ -62,9 +62,7 @@ export const createClient = (request: NextRequest) => {
   return { supabase, response };
 };
 
-const routes =[
-  '/gatos'
-];
+
 
 export const updateSession = async (request: NextRequest) => {
   try {
@@ -76,11 +74,7 @@ export const updateSession = async (request: NextRequest) => {
      const { data:{ user }} =  await supabase.auth.getUser();
     //Si inteta entrar a alguna ruta protegida
     //si no tiene sesión, tambien a login
-    if (routes.includes( request.nextUrl.pathname) &&  !user) {
-      
-      return NextResponse.redirect(new URL('/login', request.url));
-      
-    }
+   
     /*     //Ejemplo
     console.log(request.nextUrl)
     //si ingresa a login, mostrarle el home
